@@ -80,3 +80,8 @@ ggplot(historicCurrentStates, aes(y=state, x=historic_acres_burned, xend=current
   theme_minimal() +
   theme(panel.grid.major.x=element_line(size=0.05)) +
   scale_x_continuous(labels = comma)
+
+
+# randy code for saving
+ggsave(filename = "sageSteppeChart3.png", plot = sageSteppeChart3, device = "png",  
+       width = 5.75, height = 3.8, units = "in", dpi = 500)
