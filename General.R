@@ -46,14 +46,16 @@ groupColors <-c(  "#1d4220", # conifer OK
 
 # removing savanna and shrub
 limitedGroupVeg <- groupVegData[-c(16, 17, 18, 19, 20, 21), ]
+limitedGroupVeg$order <- c(3,1,2,3,1,2,3,1,2,3,1,2,3,1,2) #created 'order' column based on what order I wanted them in
 
-ggplot(limitedGroupVeg, aes(fill=groupVeg, y=acres, x=disturbance)) + 
+limitedGroupVeg %>%
+  mutate(disturbance = fct_reorder(disturbance, order)) %>%
+ggplot(aes(fill=groupVeg, y=acres, x=disturbance)) + 
   geom_bar(position="stack", stat="identity") +
   scale_fill_manual(values = groupColors) +
   theme_bw() + ggtitle("Acres of Historical Disturbance by Fire Type") +
   xlab("") + ylab("Acres") + guides(fill=guide_legend(title="Vegetation group")) +
   scale_y_continuous(labels = comma)
-
 
 
 ## Bar chart with states
