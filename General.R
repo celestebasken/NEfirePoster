@@ -18,6 +18,27 @@ mfri %>%
 
 mfriPlot
 
+# changing font to Times New Roman
+
+library(extrafont)
+font_import(pattern="[C/c]omic")
+# font_import(pattern="[A/a]rial")
+# font_import(paths = "~/.local/share/fonts/",prompt = F)
+fonts()
+
+mfriPlot <-
+  mfri %>%
+  mutate(LABEL = fct_reorder(LABEL, -VALUE)) %>% 
+  ggplot( aes(x=LABEL, y=ACRES)) +
+  geom_bar(stat="identity", fill="#56bf5f", alpha=.8, width=.8) +
+  coord_flip() +
+  xlab("") +
+  theme_bw() + ggtitle("Mean Fire Return Interval") +
+  scale_y_continuous(name="Acres", labels = comma) +
+  theme(text=element_text(size=12, family="Times New Roman"),
+        plot.title=element_text(face="bold", size=16, vjust=2, family="Times New Roman"))
+
+
 ## Fire x ecosystems historically grouped bar
   # this way does it broken by groupVeg and then by type of disturbance
 library(ggplot2)
@@ -55,7 +76,9 @@ ggplot(aes(fill=groupVeg, y=acres, x=disturbance)) +
   scale_fill_manual(values = groupColors) +
   theme_bw() + ggtitle("Acres of Historical Disturbance by Fire Type") +
   xlab("") + ylab("Acres") + guides(fill=guide_legend(title="Vegetation group")) +
-  scale_y_continuous(labels = comma)
+  scale_y_continuous(labels = comma) +
+  theme(text=element_text(size=12, family="Times New Roman"),
+        plot.title=element_text(face="bold", size=16, vjust=2, family="Times New Roman"))
 
 
 ## Bar chart with states
