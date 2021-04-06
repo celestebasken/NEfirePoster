@@ -90,6 +90,10 @@ ggplot(historicCurrentStates, aes(x=state, y=`historical_ annual_percent_burned`
   theme_bw() + ggtitle("Historical Annual Percent Burned by State") +
   xlab("") + ylab("Percent")
 
+final <- sum(historicCurrentStates$currentAverageAcres[1-16])
+starting <- sum(historicCurrentStates$historic_acres_burned[1-16])
+((starting - final)/ starting) * 100
+
 # Dumbbell chart with states - not sure why they all start at 0
 library(ggplot2)
 library(readr)
