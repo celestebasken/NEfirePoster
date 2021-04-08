@@ -22,6 +22,7 @@ mfriPlot
 
 library(extrafont)
 font_import(pattern="[C/c]omic")
+y
 # font_import(pattern="[A/a]rial")
 # font_import(paths = "~/.local/share/fonts/",prompt = F)
 fonts()
@@ -35,9 +36,9 @@ mfriPlot <-
   xlab("") +
   theme_bw() + ggtitle("Mean Fire Return Interval") +
   scale_y_continuous(name="Acres", labels = comma) +
-  theme(text=element_text(size=12, family="Times New Roman"),
-        plot.title=element_text(face="bold", size=16, vjust=2, family="Times New Roman"))
-
+  theme(text=element_text(size=16, family="Times New Roman"),
+        plot.title=element_text(face="bold", size=20, vjust=2, family="Times New Roman"))
+mfriPlot
 
 ## Fire x ecosystems historically grouped bar
   # this way does it broken by groupVeg and then by type of disturbance
